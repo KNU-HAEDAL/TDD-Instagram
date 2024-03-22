@@ -44,10 +44,7 @@ public class ArticleEntity extends BaseTimeEntity {
     }
 
     public void addImage(String imageUrl) {
-        ArticleImageEntity articleImage = ArticleImageEntity.builder()
-                .imageUrl(imageUrl)
-                .article(this)
-                .build();
+        ArticleImageEntity articleImage = ArticleImageEntity.create(this, imageUrl);
         articleImages.add(articleImage);
     }
 }
