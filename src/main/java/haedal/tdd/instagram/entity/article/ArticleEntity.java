@@ -27,7 +27,7 @@ public class ArticleEntity extends BaseTimeEntity {
     @JoinColumn(name = "member_id")
     private MemberEntity member;
 
-    @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "article", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private final List<ArticleImageEntity> articleImages = new ArrayList<>();
 
     @Builder
@@ -36,4 +36,18 @@ public class ArticleEntity extends BaseTimeEntity {
         this.member = member;
     }
 
+    public static ArticleEntity create(String content, MemberEntity member) {
+        return ArticleEntity.builder()
+                .content(content)
+                .member(member)
+                .build();
+    }
+
+    public void addImage(String imageUrl) {
+        ArticleImageEntity articleImage = ArticleImageEntity.builder()
+                .imageUrl(imageUrl)
+                .article(this)
+                .build();
+        articleImages.add(articleImage);
+    }
 }
