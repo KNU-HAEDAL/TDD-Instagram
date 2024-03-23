@@ -16,12 +16,10 @@ spring: # test profile
     console:
       enabled: true
       path: /h2-console
-logging:
-  level:
-    org:
-      hibernate:
-        SQL: debug
-        type: trace
+logging.level:
+  org.hibernate:
+    orm.jdbc.bind: trace
+    SQL: debug
 jwt:
   secret: "b9ba6041-9927-4bf8-9bfa-fdaf95ae5a9b"
   access-token-expire-time: 1800000
