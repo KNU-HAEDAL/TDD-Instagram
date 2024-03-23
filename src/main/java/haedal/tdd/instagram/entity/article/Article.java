@@ -34,6 +34,9 @@ public class Article extends BaseTimeEntity {
     @JoinColumn(name = "member_id")
     private Member author;
 
+    @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
+    private List<ArticleImage> images = new ArrayList<>();
+
     @Builder
     public Article(String content, Member author) {
         this.content = content;

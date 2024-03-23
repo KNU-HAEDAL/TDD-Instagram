@@ -44,15 +44,6 @@ public class Member extends BaseTimeEntity {
     private String profileImageUrl;
 
     @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
-    private List<Article> articles = new ArrayList<>();
-
-    @OneToMany(mappedBy = "fromMember", fetch = FetchType.LAZY)
-    private List<MemberFollow> followings = new ArrayList<>();
-
-    @OneToMany(mappedBy = "toMember", fetch = FetchType.LAZY)
-    private List<MemberFollow> followers = new ArrayList<>();
-
-    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
     private List<Story> stories = new ArrayList<>();
 
     @Builder
