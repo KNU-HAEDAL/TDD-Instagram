@@ -34,15 +34,6 @@ public class Article extends BaseTimeEntity {
     @JoinColumn(name = "member_id")
     private Member author;
 
-    @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
-    private List<ArticleImage> images = new ArrayList<>();
-
-    @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
-    private List<ArticleLike> likes = new ArrayList<>();
-
-    @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
-    private List<Comment> comments = new ArrayList<>();
-
     @Builder
     public Article(String content, Member author) {
         this.content = content;
